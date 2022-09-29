@@ -8,7 +8,10 @@ function App() {
   return (
     <div>
       <Navbar />
-      <h1 className='text-center'>Sample Batch Kanban Board</h1>
+      <h2 className='text-center p-2 m-2'>Sample Batch Kanban Board</h2>
+      <div className='d-flex justify-content-center m-2'>
+        <button className="btn btn-primary" type="submit">Add batch</button>
+      </div>
       <KanbanContainer />
     </div>
   );

@@ -6,8 +6,8 @@ import './kanban-container.styles.css';
 
 function KanbanContainer() {
     return (
-        <div className='kanban-container'>
-            <div className='kanban-list d-flex justify-content-center'>
+        <div className='kanban-container container-fluid'>
+            <div className='kanban-list d-flex justify-content-center mb-3'>
                 <div className='kanban-column'>
                     <h4>Extraction</h4>
                     <DataCard labdata={createData(2)} />
@@ -30,7 +30,7 @@ function KanbanContainer() {
                 </div>
                 <div className='kanban-column'>
                     <h4>Sequencing</h4>
-                    <DataCard labdata={createData(8)} />
+                    <DataCard labdata={createData(6)} />
                 </div>
             </div>
         </div>
