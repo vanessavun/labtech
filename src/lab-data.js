@@ -8,13 +8,19 @@ lab data set = [
 ]
 */
 
-function createData (length) {
+export const createData = (length) => {
     let newData = [];
+    let statusUpdate = 'Running';
     for(let i = 1; i <= length; i++){
-        let progressNum = Math.floor(Math.random()*100)
+        let progressNum = Math.floor(Math.random()*101)
+        if(progressNum === 100){
+            statusUpdate = 'Complete';
+        } else if (progressNum === 0) {
+            statusUpdate = 'Failed';
+        }
         newData.push({
             batchID: i,
-            status: "Running",
+            status: statusUpdate,
             timeLeft: progressNum
         })
     }

@@ -1,12 +1,23 @@
 import React from 'react';
-import LAB_DATA from '../../lab-data';
 
-function DataCard() {
+function DataCard({ labdata }) {
+
   return (
     <div>
-      {LAB_DATA.map(data => (
+      {labdata.map(data => (
         <div key={data.batchID} className='card'>
           <div className='card-body'>
+              <div className="btn-group" role="group">
+                <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+                </button>
+                <ul className="dropdown-menu"> {/* // eslint-disable-next-line */}
+                  <li><a className="dropdown-item" href="#">Start run</a></li>{/*  // eslint-disable-next-line */}
+                  <li><a className="dropdown-item" href="#">Fail run</a></li>{/*  // eslint-disable-next-line */}
+                  <li><a className="dropdown-item" href="#">Rerun batch</a></li>{/*  // eslint-disable-next-line */}
+                  <li><a className="dropdown-item" href="#">Re-extract</a></li>{/*  // eslint-disable-next-line */}
+                  <li><a className="dropdown-item" href="#">Batch information</a></li> {/*  // eslint-disable-next-line */}
+                </ul>
+              </div>
             <h5 className='card-title'>Batch ID: {data.batchID}</h5>
             <p className="card-subtitle mb-2 text-muted">Status: {data.status}</p>
             <div className="progress">
