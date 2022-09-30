@@ -4,8 +4,9 @@ function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
+                <img src='https://cdn-icons-png.flaticon.com/512/1682/1682102.png' width="30" height="30" alt="Biotech lab logo"/>
                 {/* eslint-disable-next-line */}
-                <a className="navbar-brand" href="#">Biotech Laboratory</a>
+                <a className="navbar-brand" href="#">Biotech Lab</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

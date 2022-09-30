@@ -29,7 +29,3 @@ export const createData = (length) => {
     }
     return newData;
 }
-
-const LAB_DATA = createData(8);
-
-export default LAB_DATA;
