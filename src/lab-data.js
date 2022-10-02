@@ -1,13 +1,4 @@
 
-/*
-lab data set = [
-    {
-        batchID: 1, 
-        status: "Running", 
-    },
-]
-*/
-
 export const createDataSet = (length) => {
     let newData = [];
     let statusUpdate = null;
@@ -30,7 +21,7 @@ export const createDataSet = (length) => {
     return newData;
 }
 
-export const createData = () => {
+export const createData = (IDnumber) => {
     let statusUpdate = null;
     let progressNum = Math.floor(Math.random()*101)
 
@@ -43,7 +34,7 @@ export const createData = () => {
     }
     
     return ({
-        batchID: (Math.floor(Math.random()*10000)),
+        batchID: IDnumber,
         status: statusUpdate,
         timeLeft: progressNum
     })

@@ -1,5 +1,7 @@
 import React from 'react';
 import ProgressBar from '../progress-bar/progress-bar.component';
+import Countdown from 'react-countdown';
+import './data-card.styles.css'
 
 function DataCard({ labdata }) {
 
@@ -25,8 +27,11 @@ function DataCard({ labdata }) {
           </div>
           <div className='card-body'>
             <p className="card-subtitle mb-2 text-muted">Status: <i>{data.status}</i></p>
-            <div className="progress">
-              <ProgressBar timeLeft={data.timeLeft} />              
+            <div className='countdown-container container'>
+              <span className='position-absolute bottom-0 start-40 translate-middle text-dark'><Countdown date={Date.now() + 1000000} /></span>
+              <div className="progress">
+                <ProgressBar timeLeft={data.timeLeft} />              
+              </div>
             </div>
           </div>
         </div>
@@ -50,8 +55,11 @@ function DataCard({ labdata }) {
       </div>
       <div className='card-body'>
         <p className="card-subtitle mb-2 text-muted">Status: <i>Test</i></p>
-        <div className="progress">
-          <ProgressBar timeLeft={0} />              
+        <div className='countdown-container container'>
+              <span className='position-absolute bottom-0 start-40 translate-middle text-dark'><Countdown date={Date.now() + 1000000} /></span>
+              <div className="progress">
+                <ProgressBar timeLeft={0} />              
+              </div>
         </div>
       </div>
     </div>)

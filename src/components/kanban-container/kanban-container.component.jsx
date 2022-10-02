@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DataCard from '../data-card/data-card.component';
 import { createData, createDataSet } from '../../lab-data';
 
@@ -9,8 +9,15 @@ function KanbanContainer() {
     const [batchNumber, setBatchNumber] = useState(0);
     const [extractionBatches, setExtractionBatches] = useState([]);
 
+    useEffect(() => {
+        setNewBatch(createData(batchNumber));
+        console.log('UseEffect number: ', batchNumber)
+    }, [])
+
     const handleAddBatch = () => {
-        setNewBatch(createData());
+        console.log('Handle number 1: ', batchNumber)
+        setBatchNumber(prevNumber => prevNumber + 1);
+        setNewBatch(createData(batchNumber));
         setExtractionBatches(prevBatches => prevBatches.concat([newBatch]));
         console.log("newBatch: ", newBatch);
         console.log("batchNumber: ", batchNumber);
@@ -21,7 +28,7 @@ function KanbanContainer() {
         <div className='kanban-board'>
             {/* Add batch to Extraction task */}
             <div className='d-flex justify-content-center m-2'>
-                <button className="btn btn-primary" type="button" onClick={handleAddBatch}>Add new extraction batch</button>
+                <button className="btn btn-primary" type="button" onClick={handleAddBatch}>Add new extraction batch: {batchNumber}</button>
             </div>
             {/* Kanban board tasks for 6 tests */}
             <div className='kanban-list container-lg text-center overflow-hidden'>
