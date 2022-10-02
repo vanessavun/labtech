@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './navbar.styles.css';
 
 function Navbar() {
     return (
@@ -13,16 +14,13 @@ function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            {/* eslint-disable-next-line */}
-                            <a className="nav-link active" aria-current="page" href="#">Schedule</a>
+                            <a className="nav-link active" aria-current="page" href="http://localhost:3000/">Schedule</a>
                         </li>
                         <li className="nav-item">
-                            {/* eslint-disable-next-line */}
-                            <a className="nav-link active" aria-current="page" href="#">Accessioning</a>
+                            <a className="nav-link active" aria-current="page" href="http://localhost:3000/">Accessioning</a>
                         </li>
                         <li className="nav-item">
-                            {/* eslint-disable-next-line */}
-                            <a className="nav-link active" aria-current="page" href="#">Inventory</a>
+                            <a className="nav-link active" aria-current="page" href="http://localhost:3000/">Inventory</a>
                         </li>
                     </ul>
                     <form className="d-flex" role="search">

@@ -8,12 +8,12 @@ lab data set = [
 ]
 */
 
-export const createData = (length) => {
+export const createDataSet = (length) => {
     let newData = [];
     let statusUpdate = null;
     for(let i = 1; i <= length; i++){
         let progressNum = Math.floor(Math.random()*101)
-        console.log(progressNum)
+        // console.log(progressNum)
         if(progressNum === 100){
             statusUpdate = 'Complete';
         } else if (progressNum === 0) {
@@ -28,4 +28,23 @@ export const createData = (length) => {
         })
     }
     return newData;
+}
+
+export const createData = () => {
+    let statusUpdate = null;
+    let progressNum = Math.floor(Math.random()*101)
+
+    if(progressNum === 100){
+        statusUpdate = 'Complete';
+    } else if (progressNum === 0) {
+        statusUpdate = 'Failed';
+    } else {
+        statusUpdate = 'Running';
+    }
+    
+    return ({
+        batchID: (Math.floor(Math.random()*10000)),
+        status: statusUpdate,
+        timeLeft: progressNum
+    })
 }
