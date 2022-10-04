@@ -8,11 +8,11 @@ function KanbanContainer() {
     const [newBatch, setNewBatch] = useState({});
     const [batchNumber, setBatchNumber] = useState(1);
     const [extractionBatches, setExtractionBatches] = useState([]);
-    const [libraryPrepBatches, setLibraryPrepBatches] = useState(createDataSet(2));
-    const [lpCleanupBatches, setlpCleanupBatches] = useState(createDataSet(4));
-    const [enrichmentBatches, setEnrichmentBatches] = useState(createDataSet(1));
-    const [quantitationBatches, setQuantitationBatches] = useState([]);
-    const [sequencingBatches, setSequencingBatches] = useState(createDataSet(5));
+    const [libraryPrepBatches] = useState(createDataSet(2));
+    const [lpCleanupBatches] = useState(createDataSet(4));
+    const [enrichmentBatches] = useState(createDataSet(1));
+    const [quantitationBatches] = useState([]);
+    const [sequencingBatches] = useState(createDataSet(5));
 
     useEffect(() => {
         setNewBatch(createData(batchNumber));

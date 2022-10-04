@@ -1,4 +1,5 @@
-
+// DataSet is an array of batches as objects:
+// [{batchId: number, status: string, timeLeft: number}, {}, {}...]
 export const createDataSet = (length) => {
     let newData = [];
     let statusUpdate = null;
@@ -21,6 +22,8 @@ export const createDataSet = (length) => {
     return newData;
 }
 
+//Data is an object for one batch
+//{batchId: number, status: string, timeLeft: number}
 export const createData = (IDnumber) => {
     let statusUpdate = null;
     let progressNum = Math.floor(Math.random()*101)

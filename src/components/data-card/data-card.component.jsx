@@ -30,7 +30,7 @@ function DataCard({ labdata }) {
           <div className='card-body'>
             <p className="card-subtitle mb-2 text-muted">Status: <i>{data.status}</i></p>
             <div className='countdown-container container'>
-              <span className='position-absolute bottom-0 start-40 translate-middle text-dark'><Countdown date={Date.now() + 1000000} /></span>
+              <span className='position-absolute bottom-0 start-40 translate-middle text-dark'><Countdown date={Date.now() + 100000} /></span>
               <div className="progress">
                 <ProgressBar timeLeft={data.timeLeft} />
               </div>
