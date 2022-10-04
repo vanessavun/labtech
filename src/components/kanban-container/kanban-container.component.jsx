@@ -7,42 +7,45 @@ import './kanban-container.styles.css';
 function KanbanContainer() {
     const [newBatch, setNewBatch] = useState({});
     const [batchNumber, setBatchNumber] = useState(1);
-    const [extractionBatches, setExtractionBatches] = useState(createDataSet(1));
-    const [libraryPrepBatches, setLibraryPrepBatches] = useState(createDataSet(4));
-    const [lpCleanupBatches, setlpCleanupBatches] = useState(createDataSet(2));
+    const [extractionBatches, setExtractionBatches] = useState([]);
+    const [libraryPrepBatches, setLibraryPrepBatches] = useState(createDataSet(2));
+    const [lpCleanupBatches, setlpCleanupBatches] = useState(createDataSet(4));
     const [enrichmentBatches, setEnrichmentBatches] = useState(createDataSet(1));
-    const [quantitationBatches, setQuantitationBatches] = useState(createDataSet(2));
+    const [quantitationBatches, setQuantitationBatches] = useState([]);
     const [sequencingBatches, setSequencingBatches] = useState(createDataSet(5));
-    
+
     useEffect(() => {
         setNewBatch(createData(batchNumber));
-        console.log('UseEffect number: ', batchNumber)
+        console.log('UseEffect batchNumber: ', batchNumber)
+        if (batchNumber > 5) {
+            console.log('batch num is ===', batchNumber)
+        } else {
+            console.log('batch num is +++', batchNumber)
+        }
     }, [])
 
     const handleAddBatch = () => {
-        console.log('Handle number 1: ', batchNumber)
         setBatchNumber(prevNumber => prevNumber + 1);
-        setNewBatch(createData(batchNumber));
+        setNewBatch(createData(batchNumber + 1))
+        console.log("batchNumber: ", batchNumber);
         setExtractionBatches(prevBatches => prevBatches.concat([newBatch]));
         console.log("newBatch: ", newBatch);
-        console.log("batchNumber: ", batchNumber);
         console.log("extractions: ", extractionBatches);
     }
-    
+
     return (
         <div className='kanban-board'>
             {/* Add batch to Extraction task plus future task: make component */}
             <div className='d-flex justify-content-around m-2'>
-                <button className="btn btn-primary" type="button" onClick={handleAddBatch}>Add new extraction batch: {batchNumber}</button>
+                <button className="btn btn-primary" type="button" onClick={() => handleAddBatch()}>Add new extraction batch: {batchNumber}</button>
                 <form className="d-flex" role="search">
                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                    <button className="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
             {/* Kanban board tasks for 6 tests */}
             <div className='kanban-list container-lg text-center overflow-hidden'>
                 <div className='row row-cols-3 g-2'>
-                    {/* Future task: refactor this section with mapping */}
                     <div className='kanban-column col-md-2'>
                         <h5>Extraction</h5>
                         <DataCard labdata={extractionBatches} />
