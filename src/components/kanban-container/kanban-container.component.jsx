@@ -6,9 +6,14 @@ import './kanban-container.styles.css';
 
 function KanbanContainer() {
     const [newBatch, setNewBatch] = useState({});
-    const [batchNumber, setBatchNumber] = useState(0);
-    const [extractionBatches, setExtractionBatches] = useState([]);
-
+    const [batchNumber, setBatchNumber] = useState(1);
+    const [extractionBatches, setExtractionBatches] = useState(createDataSet(1));
+    const [libraryPrepBatches, setLibraryPrepBatches] = useState(createDataSet(4));
+    const [lpCleanupBatches, setlpCleanupBatches] = useState(createDataSet(2));
+    const [enrichmentBatches, setEnrichmentBatches] = useState(createDataSet(1));
+    const [quantitationBatches, setQuantitationBatches] = useState(createDataSet(2));
+    const [sequencingBatches, setSequencingBatches] = useState(createDataSet(5));
+    
     useEffect(() => {
         setNewBatch(createData(batchNumber));
         console.log('UseEffect number: ', batchNumber)
@@ -26,36 +31,41 @@ function KanbanContainer() {
     
     return (
         <div className='kanban-board'>
-            {/* Add batch to Extraction task */}
-            <div className='d-flex justify-content-center m-2'>
+            {/* Add batch to Extraction task plus future task: make component */}
+            <div className='d-flex justify-content-around m-2'>
                 <button className="btn btn-primary" type="button" onClick={handleAddBatch}>Add new extraction batch: {batchNumber}</button>
+                <form className="d-flex" role="search">
+                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button className="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
             {/* Kanban board tasks for 6 tests */}
             <div className='kanban-list container-lg text-center overflow-hidden'>
                 <div className='row row-cols-3 g-2'>
-                    <div className='kanban-column col-lg-2'>
+                    {/* Future task: refactor this section with mapping */}
+                    <div className='kanban-column col-md-2'>
                         <h5>Extraction</h5>
                         <DataCard labdata={extractionBatches} />
                     </div>
-                    <div className='kanban-column col-lg-2'>
+                    <div className='kanban-column col-md-2'>
                         <h5>Library Prep</h5>
-                        <DataCard labdata={createDataSet(5)} />
+                        <DataCard labdata={libraryPrepBatches} />
                     </div>
-                    <div className='kanban-column col-lg-2'>
+                    <div className='kanban-column col-md-2'>
                         <h5>LP Cleanup</h5>
-                        <DataCard labdata={createDataSet(3)} />
+                        <DataCard labdata={lpCleanupBatches} />
                     </div>
-                    <div className='kanban-column col-lg-2'>
+                    <div className='kanban-column col-md-2'>
                         <h5>Enrichment</h5>
-                        <DataCard labdata={createDataSet(4)} />
+                        <DataCard labdata={enrichmentBatches} />
                     </div>
-                    <div className='kanban-column col-lg-2'>
+                    <div className='kanban-column col-md-2'>
                         <h5>Quantitation</h5>
-                        <DataCard labdata={createDataSet(1)} />
+                        <DataCard labdata={quantitationBatches} />
                     </div>
-                    <div className='kanban-column col-lg-2'>
+                    <div className='kanban-column col-md-2'>
                         <h5>Sequencing</h5>
-                        <DataCard labdata={createDataSet(6)} />
+                        <DataCard labdata={sequencingBatches} />
                     </div>
                 </div>
             </div>
