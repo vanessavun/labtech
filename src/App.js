@@ -11,7 +11,6 @@ function App() {
       <Navbar />
       <h2 className='text-center p-2 m-2'>Sample Batch Kanban Board</h2>
       <KanbanContainer />
-      <p className='text-center p-2 m-2'><a href="https://www.flaticon.com/free-icons/laboratory" title="laboratory icons">Laboratory icons created by Freepik - Flaticon</a></p>
     </div>
   );
 }
