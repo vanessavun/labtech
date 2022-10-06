@@ -1,12 +1,11 @@
 # LAB TECH
 
-This project is built using React, JavaScript, HTML/CSS (Sass). 
+This project is built using React, JavaScript, HTML/CSS, Bootstrap. 
 
 ## The problem to solve
 
-A biotech laboratory has been keeping track of their sample batch status using a whiteboard and an excel spreadsheet. The goal is to allow automatic timing of batches when they are run on the matchine. When the batches are done, they will show up on a task queue ready to do the next step.
+A biotech laboratory has been keeping track of their sample batch status using a whiteboard, taped-on cards for each sample batch, and excel spreadsheets. 
 
 ## The solution
 
-Create a sample batch tracking kanban board built using React. Each batch will be its own component with visible status and a count down.
-
+The goal is to show a visual representation of batches running through the laboratory. The kanban board allows countdown timing of batches when they are running on the matchine. When the batches are done, they will show up on the next test queue which will be ready to do the next step. The laboratory technologist will start the machine and also the batch in the kanban board.

@@ -14,14 +14,15 @@ function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="http://localhost:3000/">Schedule</a>
+                            <a className="nav-link active" aria-current="page" href="https://verdant-lolly-f32bb9.netlify.app/">Kanban Board</a>
                         </li>
+                        {/* For future features:
                         <li className="nav-item">
                             <a className="nav-link active" aria-current="page" href="http://localhost:3000/">Accessioning</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link active" aria-current="page" href="http://localhost:3000/">Inventory</a>
-                        </li>
+                        </li> */}
                     </ul>
                     <ul className="navbar-nav mb-2 mb-lg-0">
                         <li className="nav-item">Welcome, Vanessa!</li>
