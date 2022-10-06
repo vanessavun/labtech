@@ -25,20 +25,19 @@ export const createDataSet = (length) => {
 //Data is an object for one batch
 //{batchId: number, status: string, timeLeft: number}
 export const createData = (IDnumber) => {
-    let statusUpdate = null;
-    let progressNum = Math.floor(Math.random()*101)
-
-    if(progressNum === 100){
-        statusUpdate = 'Complete';
-    } else if (progressNum === 0) {
-        statusUpdate = 'Failed';
-    } else {
-        statusUpdate = 'Running';
-    }
+    // let statusUpdate = null;
+    // let progressNum = Math.floor(Math.random()*101)
+    // if(progressNum === 100){
+    //     statusUpdate = 'Complete';
+    // } else if (progressNum === 0) {
+    //     statusUpdate = 'Failed';
+    // } else {
+    //     statusUpdate = 'Running';
+    // }
     
     return ({
         batchID: IDnumber,
-        status: statusUpdate,
-        timeLeft: progressNum
+        status: 'Ready',
+        timeLeft: 100
     })
 }

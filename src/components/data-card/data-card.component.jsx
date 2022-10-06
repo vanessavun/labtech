@@ -8,37 +8,59 @@ function DataCard({ labdata }) {
   return (
     <div>
       {/* If there is data */}
-      {labdata.length > 0 ? (labdata.map(data => (
-        <div key={data.batchID} className='card mb-2'>
-          <div className="card-header">
-            <div className="btn-group float-end" role="group">
-              <button type="button" className="btn btn-secondary dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false" >
-              </button>
-              <ul className="dropdown-menu"> {/* // eslint-disable-next-line */}
-                <li><a className="dropdown-item" href="http://localhost:3000/">Start run</a></li>
-                <li><a className="dropdown-item" href="http://localhost:3000/">Proceed next step</a></li>
-                <li><hr className='dropdown-divider' /></li>
-                <li><a className="dropdown-item" href="http://localhost:3000/">Fail run</a></li>
-                <li><a className="dropdown-item" href="http://localhost:3000/">Rerun batch</a></li>
-                <li><a className="dropdown-item" href="http://localhost:3000/">Re-extract</a></li>
-                <li><hr className='dropdown-divider' /></li>
-                <li><a className="dropdown-item" href="http://localhost:3000/">Batch information</a></li>
-              </ul>
+      {labdata.length > 0 
+        ? (labdata.map(data => (
+          <div key={data.batchID} className='card mb-2'>
+            {/* Card header: batch ID number and dropdown menu */}
+            <div className="card-header">
+              <div className="btn-group float-end" role="group">
+                <button type="button" className="btn btn-secondary dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false" >
+                </button>
+                <ul className="dropdown-menu">
+                  {/* Drop down menu buttons to move batch */}
+                  <li>
+                    <button 
+                      className="dropdown-item" 
+                      onClick={()=>console.log("START")}>
+                      Start run
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      className="dropdown-item" 
+                      onClick={()=>console.log("PROCEED")}>
+                      Proceed next step
+                    </button>
+                  </li>
+                  {/* Future functions:
+                   <li><hr className='dropdown-divider' /></li>
+                  <li><button className="dropdown-item" onClick={()=>console.log("FAIL")}>Fail run</button></li>
+                  <li><button className="dropdown-item" onClick={()=>console.log("RERUN")}>Rerun batch</button></li>
+                  <li><button className="dropdown-item" onClick={()=>console.log("RE-EXTRACT")}>Re-extract</button></li>
+                  <li><hr className='dropdown-divider' /></li>
+                  <li><button className="dropdown-item" onClick={()=>console.log("BATCH INFO")}>Batch information</button></li> 
+                  */}
+                </ul>
+              </div>
+              <p className='card-title'>Batch ID: {data.batchID}</p>
             </div>
-            <p className='card-title'>Batch ID: {data.batchID}</p>
-          </div>
-          <div className='card-body'>
-            <p className="card-subtitle mb-2 text-muted">Status: <i>{data.status}</i></p>
-            <div className='countdown-container container'>
-              <span className='position-absolute bottom-0 start-40 translate-middle text-dark'><Countdown date={Date.now() + 100000} /></span>
-              <div className="progress">
-                <ProgressBar timeLeft={data.timeLeft} />
+            {/* Card body: progress bar and countdown */}
+            <div className='card-body'>
+              <p className="card-subtitle mb-2 text-muted">Status: <i>{data.status}</i></p>
+              <div className='countdown-container container'>
+                <span className='position-absolute bottom-0 start-40 translate-middle text-dark'>
+                  <Countdown 
+                    date={Date.now() + 100000} 
+                    autoStart={false} />
+                </span>
+                <div className="progress">
+                  <ProgressBar timeLeft={data.timeLeft} />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )))
-        // If there is no data
+          )))
+        // If there is no data, show no pending batches message
         : (<div className='alert alert-primary' role='alert'>
             <span>No pending batches</span>
           </div>)
