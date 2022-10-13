@@ -2,6 +2,9 @@ import React from 'react'
 
 function ProgressBar({timeLeft}) {
     let progress = null;
+    // If status is Ready, display className="progress-bar bg-success" (green bar)
+
+    // Else:
     if (timeLeft === 0){
         progress = (<div className="progress-bar bg-danger"
         role="progressbar"
