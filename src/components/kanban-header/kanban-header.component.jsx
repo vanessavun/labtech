@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import { KanbanContext } from '../../context/KanbanContext'
 
-function KanbanHeader({batchNumber, handleAddBatch}) {
+function KanbanHeader() {
   const {addBatch} = useContext(KanbanContext)
   
   return (

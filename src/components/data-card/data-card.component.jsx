@@ -1,7 +1,7 @@
 import React from 'react';
-import ProgressBar from '../progress-bar/progress-bar.component';
-import Countdown from 'react-countdown';
+
 import DataCardDropdown from '../data-card-dropdown/data-card-dropdown.component'
+import DataCardStatus from '../data-card-status/data-card-status.component';
 
 import './data-card.styles.css'
 
@@ -16,26 +16,12 @@ function DataCard({ labdata }) {
             {/* Card header: batch ID number and dropdown menu */}
             <div className="card-header">
               <div className="btn-group float-end" role="group">
-                {/* Drop down menu buttons to move batch */}
-                <DataCardDropdown data={data} />
-              </div>
-              <p className='card-title'>Batch ID: {data.batchId}</p>
+              <DataCardDropdown data={data} />
+            </div>
+              <p className='card-title'>Batch ID: 0000{data.batchId}</p>
             </div>
             {/* Card body: progress bar and countdown */}
-            <div className='card-body'>
-              <p className="card-subtitle mb-2 text-muted">Status: <i>{data.status}</i></p>
-              <div className='countdown-container container'>
-                <span className='position-absolute bottom-0 start-40 translate-middle text-dark'>
-                  <Countdown 
-                    date={Date.now() + data.time} 
-                    autoStart={false}
-                   />
-                </span>
-                <div className="progress">
-                  <ProgressBar timeLeft={data.timeLeft} />
-                </div>
-              </div>
-            </div>
+            <DataCardStatus data={data} />
           </div>
           )))
         // If there is no data, show no pending batches message

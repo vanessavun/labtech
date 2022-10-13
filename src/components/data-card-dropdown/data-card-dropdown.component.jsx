@@ -18,17 +18,11 @@ function DataCardDropdown({data}) {
                 </button>
             </li>
             <li>
-                {data.test !== 'sequencing' 
-                ? (<button 
+                <button 
                     className="dropdown-item" 
                     onClick={()=>moveToNextTest(data)}>
-                    Proceed next step
-                    </button>)
-                : (<button 
-                    className="dropdown-item" 
-                    onClick={()=>moveToNextTest(data)}>
-                    Remove
-                    </button>)}
+                    {data.test !== 'sequencing' ? "Proceed next step" : "Remove"}
+                </button>
             </li>
             {/* Future functions:
             <li><hr className='dropdown-divider' /></li>
