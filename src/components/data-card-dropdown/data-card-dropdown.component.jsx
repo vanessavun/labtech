@@ -2,8 +2,7 @@ import React, {useContext} from 'react'
 import { KanbanContext } from '../../context/KanbanContext'
 
 function DataCardDropdown({data}) {
-    console.log("Datacard dropdown data:", data)
-    const {moveToNextTest} = useContext(KanbanContext);
+    const { moveToNextTest } = useContext(KanbanContext);
 
     return (
         <>
@@ -24,14 +23,12 @@ function DataCardDropdown({data}) {
                     {data.test !== 'sequencing' ? "Proceed next step" : "Remove"}
                 </button>
             </li>
-            {/* Future functions:
             <li><hr className='dropdown-divider' /></li>
-            <li><button className="dropdown-item" onClick={()=>console.log("FAIL")}>Fail run</button></li>
-            <li><button className="dropdown-item" onClick={()=>console.log("RERUN")}>Rerun batch</button></li>
-            <li><button className="dropdown-item" onClick={()=>console.log("RE-EXTRACT")}>Re-extract</button></li>
+            <li><button className="dropdown-item" onClick={()=>console.log("FAIL")} disabled>Fail run</button></li>
+            <li><button className="dropdown-item" onClick={()=>console.log("RERUN")} disabled>Rerun batch</button></li>
+            <li><button className="dropdown-item" onClick={()=>console.log("RE-EXTRACT")}disabled>Re-extract</button></li>
             <li><hr className='dropdown-divider' /></li>
-            <li><button className="dropdown-item" onClick={()=>console.log("BATCH INFO")}>Batch information</button></li> 
-            */}
+            <li><button className="dropdown-item" onClick={()=>console.log("BATCH INFO")}disabled>Batch information</button></li> 
             </ul>
         </>
   )

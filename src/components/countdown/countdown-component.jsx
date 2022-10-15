@@ -3,8 +3,8 @@ import { useCountdown } from '../../hooks/useCountdown'
 import CompleteNotice from './countdown-complete.component';
 import ShowCounter from './countdown-showcounter.component';
 
-function Countdown({ targetDate, start }) {
-  const [days, hours, minutes, seconds] = useCountdown(targetDate);
+function Countdown({ targetTime }) {
+  const [days, hours, minutes, seconds] = useCountdown(targetTime);
 
   if (days + hours + minutes + seconds <= 0) {
     return <CompleteNotice />;

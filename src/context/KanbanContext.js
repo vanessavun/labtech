@@ -7,12 +7,15 @@ function KanbanContextProvider({children}) {
     const [batchNumber, setBatchNumber] = useState(1);
 
     const createExtractionBatch = (batchNum) => {
+        const futureTime = Date.now() + 10000;
+
         return {
             batchId: batchNum,
             status: "Ready",
             test: "extraction",
-            time: 10000,
-            timeLeft: 100,
+            time: futureTime,
+            timeLeft: 50,
+            isTimerActive: false
         }
     }
 
@@ -59,12 +62,34 @@ function KanbanContextProvider({children}) {
         setBatches(batchUpdated)
     }
 
+    const stopTimer = (batchTimerToUpdate) => {
+        let batchUpdated = batches.map(batch => {
+            if(batch.batchId === batchTimerToUpdate.batchId){
+                return {...batch, isTimerActive: false}
+            }
+            return batch;
+        });
+        setBatches(batchUpdated)
+    }
+
+    const startTimer = (batchTimerToUpdate) => {
+        let batchUpdated = batches.map(batch => {
+            if(batch.batchId === batchTimerToUpdate.batchId){
+                return {...batch, isTimerActive: true}
+            }
+            return batch;
+        });
+        setBatches(batchUpdated)
+    }
+
     return (
         <KanbanContext.Provider value={{
             batches, 
             batchNumber,
             addBatch,
-            moveToNextTest}}
+            moveToNextTest,
+            stopTimer,
+            startTimer}}
         >
             {children}
         </KanbanContext.Provider>

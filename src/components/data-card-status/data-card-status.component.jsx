@@ -1,12 +1,9 @@
 import React from 'react'
 import Countdown from '../countdown/countdown-component';
-import Progress from '../progress-bar/progress-bar.component'
+import Progress from '../progress-bar/progress-bar.component';
 
-function DataCardStatus({data}) {
-    const timeLeft = data.time
-    const now = new Date().getTime()
-    const future = timeLeft + now
-    const start = false;
+function DataCardStatus({ data }) {
+    const future = data.time;
 
     return (
         <>
@@ -17,7 +14,7 @@ function DataCardStatus({data}) {
                             timeLeft={data.timeLeft}
                     />
                     <span className='d-inline-flex position-absolute top-80 translate-middle'>
-                        <Countdown targetDate={future} start={start} />
+                        <Countdown targetTime={future} />
                     </span>
                 </div>
             </div>
