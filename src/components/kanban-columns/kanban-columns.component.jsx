@@ -12,17 +12,17 @@ function KanbanColumns() {
     
     const testColumns = [
         {title: 'Extraction',
-        batchList: testColumn("extraction")},
+        batch: testColumn("extraction")},
         {title: 'Library Prep',
-        batchList: testColumn("libraryPrep")},
+        batch: testColumn("libraryPrep")},
         {title: 'LP Cleanup',
-        batchList: testColumn("lpCleanup")},
+        batch: testColumn("lpCleanup")},
         {title: 'Enrichment',
-        batchList: testColumn("enrichment")},
+        batch: testColumn("enrichment")},
         {title: 'Quantitation',
-        batchList: testColumn("quantitation")},
+        batch: testColumn("quantitation")},
         {title: 'Sequencing',
-        batchList: testColumn("sequencing")},
+        batch: testColumn("sequencing")},
     ]
         
     return (
@@ -31,8 +31,8 @@ function KanbanColumns() {
                 {testColumns.map(column => (
                     <div className='kanban-column col-md-2'>
                         <h5>{column.title}</h5>
-                    {/* DATACARD TO RECEIVE INDIVIDUAL BATCH Object */}
-                    <DataCard labdata={column.batchList} />
+                    {/* DataCard to display INDIVIDUAL BATCH object */}
+                    <DataCard batch={column.batch} />
                 </div>
                 ))}
             </div>

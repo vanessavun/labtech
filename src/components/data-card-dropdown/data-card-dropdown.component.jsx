@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import { KanbanContext } from '../../context/KanbanContext'
 
 function DataCardDropdown({data}) {
-    const { moveToNextTest } = useContext(KanbanContext);
+    const { moveToNextTest, startTimer } = useContext(KanbanContext);
 
     return (
         <>
@@ -12,7 +12,7 @@ function DataCardDropdown({data}) {
             <li>
                 <button 
                 className="dropdown-item" 
-                onClick={()=>console.log("START")}>
+                onClick={()=>startTimer(data)}>
                 Start run
                 </button>
             </li>
@@ -23,6 +23,7 @@ function DataCardDropdown({data}) {
                     {data.test !== 'sequencing' ? "Proceed next step" : "Remove"}
                 </button>
             </li>
+            {/* Disabled functionality for now */}
             <li><hr className='dropdown-divider' /></li>
             <li><button className="dropdown-item" onClick={()=>console.log("FAIL")} disabled>Fail run</button></li>
             <li><button className="dropdown-item" onClick={()=>console.log("RERUN")} disabled>Rerun batch</button></li>

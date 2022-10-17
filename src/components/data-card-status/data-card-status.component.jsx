@@ -3,7 +3,6 @@ import Countdown from '../countdown/countdown-component';
 import Progress from '../progress-bar/progress-bar.component';
 
 function DataCardStatus({ data }) {
-    const future = data.time;
 
     return (
         <>
@@ -14,7 +13,7 @@ function DataCardStatus({ data }) {
                             timeLeft={data.timeLeft}
                     />
                     <span className='d-inline-flex position-absolute top-80 translate-middle'>
-                        <Countdown targetTime={future} />
+                        <Countdown data={data} />
                     </span>
                 </div>
             </div>

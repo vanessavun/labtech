@@ -1,17 +1,23 @@
 import { useEffect, useState } from 'react';
 
-const useCountdown = (targetTime) => {
+const useCountdown = (targetTime, data) => {
+  const { isTimerActive } = data;
   const [countDown, setCountDown] = useState(targetTime-(Date.now()));
   
+  console.log(isTimerActive)
   useEffect(() => {
-    if (countDown < 0) return clearInterval(interval);
+    if(isTimerActive) {
+      if (countDown < 0) return clearInterval(interval);
 
-    const interval = setInterval(() => {
-      setCountDown(targetTime-(Date.now()));
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [countDown]);
+      const interval = setInterval(() => {
+        setCountDown(targetTime-(Date.now()));
+      }, 1000);
+  
+      return () => {
+        clearInterval(interval);
+      } 
+    }
+  }, [countDown, isTimerActive]);
 
   return getReturnValues(countDown);
 };

@@ -62,16 +62,6 @@ function KanbanContextProvider({children}) {
         setBatches(batchUpdated)
     }
 
-    const stopTimer = (batchTimerToUpdate) => {
-        let batchUpdated = batches.map(batch => {
-            if(batch.batchId === batchTimerToUpdate.batchId){
-                return {...batch, isTimerActive: false}
-            }
-            return batch;
-        });
-        setBatches(batchUpdated)
-    }
-
     const startTimer = (batchTimerToUpdate) => {
         let batchUpdated = batches.map(batch => {
             if(batch.batchId === batchTimerToUpdate.batchId){
@@ -88,7 +78,6 @@ function KanbanContextProvider({children}) {
             batchNumber,
             addBatch,
             moveToNextTest,
-            stopTimer,
             startTimer}}
         >
             {children}
