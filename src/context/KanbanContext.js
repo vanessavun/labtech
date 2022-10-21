@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 const KanbanContext = React.createContext()
 
@@ -7,14 +7,16 @@ function KanbanContextProvider({children}) {
     const [batchNumber, setBatchNumber] = useState(1);
 
     const createExtractionBatch = (batchNum) => {
+        const futureTime = Date.now() + 10000;
+
         return {
             batchId: batchNum,
-            status: "Ready",
             test: "extraction",
-            time: 10000,
-            timeLeft: 100,
+            time: futureTime,
+            isTimerActive: false
         }
     }
+    
 
     const addBatch = () => {
         setBatches(prevBatches => prevBatches.concat([createExtractionBatch(batchNumber)]));
@@ -60,11 +62,13 @@ function KanbanContextProvider({children}) {
     }
 
     return (
-        <KanbanContext.Provider value={{
-            batches, 
-            batchNumber,
-            addBatch,
-            moveToNextTest}}
+        <KanbanContext.Provider 
+            value={{
+                batches, 
+                batchNumber,
+                addBatch,
+                moveToNextTest,
+                }}
         >
             {children}
         </KanbanContext.Provider>

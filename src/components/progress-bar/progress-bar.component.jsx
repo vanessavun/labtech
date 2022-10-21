@@ -2,22 +2,19 @@ import React from 'react'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
 function Progress({timeLeft}) {
-    let progress = null;
-    // If status is Ready, display className="progress-bar bg-success" (green bar)
+    let progress = 0;
 
-    // Else:
-    if (timeLeft === 0){
-        progress = <ProgressBar variant="danger" now={100} />
-    } else if (timeLeft === 100){
-        progress = <ProgressBar variant="success" now={100} />
+    if (timeLeft !== 100) {
+      progress = <ProgressBar now={timeLeft} />
     } else {
-        progress = <ProgressBar now={timeLeft} />
+      progress = <ProgressBar variant="success" now={100} />
     }
-  return (
-    <>
-     {progress}
-    </>
-  )
+
+    return (
+      <>
+      {progress}
+      </>
+    )
 }
 
 export default Progress
