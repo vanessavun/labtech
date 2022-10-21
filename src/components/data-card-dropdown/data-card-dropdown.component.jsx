@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import { KanbanContext } from '../../context/KanbanContext'
 
 function DataCardDropdown({data}) {
-    const { moveToNextTest, startTimer } = useContext(KanbanContext);
+    const { moveToNextTest } = useContext(KanbanContext);
 
     return (
         <>
@@ -12,7 +12,7 @@ function DataCardDropdown({data}) {
             <li>
                 <button 
                 className="dropdown-item" 
-                onClick={()=>startTimer(data)}>
+                onClick={()=>console.log("Start timer")}>
                 Start run
                 </button>
             </li>
