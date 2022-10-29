@@ -2,6 +2,11 @@ import React from 'react';
 import './navbar.styles.css';
 
 function Navbar() {
+<<<<<<< Updated upstream
+=======
+    const {userLogin, handleLogin} = useContext(KanbanContext);
+
+>>>>>>> Stashed changes
     return (
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
