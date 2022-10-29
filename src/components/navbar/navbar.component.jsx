@@ -1,15 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './navbar.styles.css';
-import { KanbanContext } from '../../context/KanbanContext';
-import { addData, readData } from '../../firebase'
 
 function Navbar() {
+<<<<<<< Updated upstream
+=======
     const {userLogin, handleLogin} = useContext(KanbanContext);
 
-    console.log("Navbar")
-    addData()
-    readData()
-
+>>>>>>> Stashed changes
     return (
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
@@ -24,16 +21,17 @@ function Navbar() {
                         <li className="nav-item">
                             <a className="nav-link active" aria-current="page" href="https://verdant-lolly-f32bb9.netlify.app/">Kanban Board</a>
                         </li>
+                        {/* For future features:
+                        <li className="nav-item">
+                            <a className="nav-link active" aria-current="page" href="http://localhost:3000/">Accessioning</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link active" aria-current="page" href="http://localhost:3000/">Inventory</a>
+                        </li> */}
                     </ul>
-                    <ul className="navbar-nav">
-                        {userLogin ?
-                            (<>
-                                <li className="nav-item">Welcome, Vanessa!</li>
-                                <li className='nav-item ps-2'><button className="btn btn-primary btn-sm" type="button" onClick={() => handleLogin()}>Log Out</button></li>
-                            </>)
-                            : (
-                                <li className='nav-item ps-2'><button className="btn btn-primary btn-sm" type="button" onClick={() => handleLogin()}>Log In</button></li>)
-                        }
+                    <ul className="navbar-nav mb-2 mb-lg-0">
+                        <li className="nav-item">Welcome, Vanessa!</li>
+                        <li className='nav-item ps-2'><button className="btn btn-primary btn-sm" type="button">Log Out</button></li>
                     </ul>
                 </div>
             </div>
