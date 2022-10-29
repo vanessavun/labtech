@@ -6,13 +6,14 @@ import Navbar from './components/navbar/navbar.component';
 import KanbanBoardTitle from './components/kanban-board-title/kanban-board.component';
 import { KanbanContextProvider } from './context/KanbanContext';
 
+
 function App() {
 
   return (
     <>
-      <Navbar />
-      <KanbanBoardTitle />
       <KanbanContextProvider>
+        <Navbar />
+        <KanbanBoardTitle />
         <KanbanContainer />
       </KanbanContextProvider>
     </>
