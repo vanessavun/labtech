@@ -12,7 +12,8 @@ function DataCardDropdown({data}) {
             <li>
                 <button 
                 className="dropdown-item" 
-                onClick={()=>console.log("Start timer")}>
+                onClick={()=>console.log("Start timer")}
+                disabled>
                 Start run
                 </button>
             </li>

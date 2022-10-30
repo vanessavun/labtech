@@ -32,6 +32,7 @@ function KanbanContextProvider({children}) {
         const testToUpdate = batchToUpdate.test;
         let updatedTest = null;
         let batchUpdated = batches;
+        const futureTime = Date.now() + 10000;
 
         switch(testToUpdate){
             case 'extraction':
@@ -57,7 +58,7 @@ function KanbanContextProvider({children}) {
         } else {
             batchUpdated = batches.map(batch => {
                 if(batch.batchId === batchToUpdate.batchId){
-                    return {...batch, test: updatedTest}
+                    return {...batch, test: updatedTest, time: futureTime}
                 }
                 return batch;
             });

@@ -22,7 +22,7 @@ function DataCardStatus({ data }) {
         } else if(timeLeft > 0 && timeLeft < 100) {
             setStatus("Running")
         } else {
-            setStatus("")
+            setStatus("Completed")
         }
     }
 
