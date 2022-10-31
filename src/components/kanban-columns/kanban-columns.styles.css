@@ -1,0 +1,10 @@
+.kanban-list {
+    background-color: #94bbe9;
+    min-height: 500px;
+    border-radius: 5px;
+}
+
+.kanban-column {
+    min-height: 250px;
+}
+

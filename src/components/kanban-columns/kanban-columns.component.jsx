@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import DataCard from '../data-card/data-card.component';
 import { KanbanContext } from '../../context/KanbanContext';
+import './kanban-columns.styles.css';
 
 function KanbanColumns() {
     const {batches} = useContext(KanbanContext)
@@ -26,8 +27,8 @@ function KanbanColumns() {
     ]
         
     return (
-        <div className='kanban-list container-lg text-center overflow-hidden'>
-            <div className='row row-cols-3 g-2'>
+        <div className='kanban-list container-lg text-center p-2'>
+            <div className='row row-cols-2 g-1 p-1'>
                 {testColumns.map(column => (
                     <div className='kanban-column col-md-2'>
                         <h5>{column.title}</h5>
