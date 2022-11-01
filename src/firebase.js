@@ -3,9 +3,7 @@ import {
     getFirestore,
     collection,
     addDoc,
-    getDocs,
-    doc,
-    setDoc
+    getDocs
 } from "firebase/firestore";
 
 const firebaseConfig = {
