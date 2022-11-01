@@ -32,7 +32,7 @@ function KanbanContextProvider({children}) {
         const testToUpdate = batchToUpdate.test;
         let updatedTest = null;
         let batchUpdated = batches;
-        const futureTime = Date.now() + 20000;
+        const futureTime = Date.now() + 10000;
 
         switch(testToUpdate){
             case 'extraction':

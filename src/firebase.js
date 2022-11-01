@@ -4,6 +4,8 @@ import {
     collection,
     addDoc,
     getDocs,
+    doc,
+    setDoc
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -23,11 +25,13 @@ const db = getFirestore(app);
 // Add data
 export const addData = async() => {
     try {
-        const docRef = await addDoc(collection(db, "users"), {
-          first: "Vanessa",
-          last: "Test",
+        const docRef = addDoc(collection(db, "batch"), {
+          batchId: 0,
+          test: "extraction",
+          time: 15000,
+          isTimerActive: false
         });
-        console.log("Document written with ID: ", docRef.id);
+        console.log("Document written with ID: ", docRef.batchId);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
@@ -35,8 +39,8 @@ export const addData = async() => {
 
 // Read data
 export const readData = async() => {
-    const querySnapshot = await getDocs(collection(db, "users"));
+    const querySnapshot = await getDocs(collection(db, "test"));
     querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data()}`);
+    console.log(`${doc.id} => ${doc.data().batchId}`);
     });
 }

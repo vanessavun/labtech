@@ -1,14 +1,9 @@
 import React, { useContext } from 'react';
 import './navbar.styles.css';
 import { KanbanContext } from '../../context/KanbanContext';
-import { addData, readData } from '../../firebase'
 
 function Navbar() {
     const {userLogin, handleLogin} = useContext(KanbanContext);
-
-    console.log("Navbar")
-    addData()
-    readData()
 
     return (
         <nav className="navbar navbar-expand-lg bg-light">
