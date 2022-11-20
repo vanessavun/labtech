@@ -3,18 +3,35 @@ import KanbanContainer from './components/kanban-container/kanban-container.comp
 import Navbar from './components/navbar/navbar.component';
 import KanbanBoardTitle from './components/kanban-board-title/kanban-board.component';
 import { KanbanContextProvider } from './context/KanbanContext';
-import { readData } from './firebase';
+
+import { doc, getFirestore } from 'firebase/firestore';
+import { FirestoreProvider, useFirestoreDocData, useFirestore, useFirebaseApp } from 'reactfire';
+
+function BurritoTaste() {
+  const burritoRef = doc(useFirestore(), 'tryreactfire', 'burrito');
+
+  const { status, data } = useFirestoreDocData(burritoRef);
+
+  if (status === 'loading') {
+    return <p>Fetching burrito flavor...</p>;
+  }
+
+  return <p>The burrito is {data.yummy ? 'good' : 'bad'}!</p>;
+}
 
 function App() {
-  readData()
+  const firestoreInstance = getFirestore(useFirebaseApp());
 
   return (
     <>
-      <KanbanContextProvider>
-        <Navbar />
-        <KanbanBoardTitle />
-        <KanbanContainer />
-      </KanbanContextProvider>
+      <FirestoreProvider sdk={firestoreInstance}>
+        <KanbanContextProvider>
+          <Navbar />
+          <KanbanBoardTitle />
+          <KanbanContainer />
+        </KanbanContextProvider>
+        <BurritoTaste />
+      </FirestoreProvider>
     </>
   );
 }

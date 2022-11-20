@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { 
+import {
     getFirestore,
     collection,
     addDoc,
@@ -39,6 +39,8 @@ export const addData = async() => {
 export const readData = async() => {
     const querySnapshot = await getDocs(collection(db, "test"));
     querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data().batchId}`);
+    console.log(`Read date: ${doc.id} => ${doc.data().batchId}`);
     });
 }
+
+
