@@ -51,5 +51,7 @@ npm install
 
 ### Backend implementation
 
-- Firebase (none SQL)
-- To store patient batches as an array of objects
+- Firebase (noSQL)
+- Goal: To store patient batches as an array of objects
+- Result: I tried implementing Firebase but the way of querying Firebase and how the collection and documents are set up are not fitting in with the logic of the front end.
+- Lesson learned: Because of this failure to add a backend, I need to create another version of the kanban board so the schema of the backend architecture can be easily implemented with the front end logic.

@@ -2,9 +2,11 @@ import React, {useContext} from 'react';
 import DataCard from '../data-card/data-card.component';
 import { KanbanContext } from '../../context/KanbanContext';
 import './kanban-columns.styles.css';
+import {getBatches} from '../../firebase'
 
 function KanbanColumns() {
     const {batches} = useContext(KanbanContext)
+
     const testColumn = (testType) => {
         return batches.filter(batch => (
             batch.test === testType
@@ -25,6 +27,8 @@ function KanbanColumns() {
         {title: 'Sequencing',
         batch: testColumn("sequencing")},
     ]
+
+    
         
     return (
         <div className='kanban-list container-lg text-center p-2'>

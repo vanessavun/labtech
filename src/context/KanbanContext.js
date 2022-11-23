@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const KanbanContext = React.createContext()
 
@@ -26,6 +26,8 @@ function KanbanContextProvider({children}) {
         setBatches(prevBatches => prevBatches.concat([createExtractionBatch(batchNumber)]));
         setBatchNumber(prevNumber => prevNumber + 1);
     }
+
+
 
     const moveToNextTest = (batchToUpdate) => {
         //extraction > libraryPrep > lpCleanup > enrichment > quantitation > sequencing > remove

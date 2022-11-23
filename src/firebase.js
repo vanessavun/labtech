@@ -21,15 +21,17 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Add data
-export const addData = async() => {
+export const addData = async(batchInfo) => {
     try {
-        const docRef = addDoc(collection(db, "batch"), {
-          batchId: 0,
-          test: "extraction",
-          time: 15000,
-          isTimerActive: false
-        });
-        console.log("Document written with ID: ", docRef.batchId);
+        const docRef = addDoc(collection(db, "batch"), batchInfo
+        // {
+        //   batchId: 0,
+        //   test: "extraction",
+        //   time: 15000,
+        //   isTimerActive: false
+        // }
+        );
+        console.log("Document written with ID: ", docRef);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
@@ -37,10 +39,10 @@ export const addData = async() => {
 
 // Read data
 export const readData = async() => {
-    const querySnapshot = await getDocs(collection(db, "test"));
-    querySnapshot.forEach((doc) => {
-    console.log(`Read date: ${doc.id} => ${doc.data().batchId}`);
-    });
-}
+  const querySnapshot = await getDocs(collection(db, "batch"));
 
+  querySnapshot.forEach((doc) => {
+  console.log(`Read data: ${doc.id} => ${doc.data().batchId}`);
+  });
+}
 
