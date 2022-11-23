@@ -3,7 +3,7 @@ import {
     getFirestore,
     collection,
     addDoc,
-    getDocs
+    getDocs,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -22,23 +22,25 @@ const db = getFirestore(app);
 
 // Add data
 export const addData = async() => {
-    try {
-        const docRef = addDoc(collection(db, "batch"), {
-          batchId: 0,
-          test: "extraction",
-          time: 15000,
-          isTimerActive: false
-        });
-        console.log("Document written with ID: ", docRef.batchId);
-      } catch (e) {
-        console.error("Error adding document: ", e);
-      }
+  // const futureTime = Date.now() + 10000
+  try {
+      const docRef = addDoc(collection(db, "batch"),{
+        batchId: 1,
+        test: "extraction",
+        time: 15000,
+        isTimerActive: false
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
 }
 
 // Read data
 export const readData = async() => {
-    const querySnapshot = await getDocs(collection(db, "test"));
+    const querySnapshot = await getDocs(collection(db, "batch"));
+    
     querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data().batchId}`);
+      console.log(`Doc batchId: ${doc.batchId}`);
     });
 }
