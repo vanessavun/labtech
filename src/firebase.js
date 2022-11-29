@@ -7,7 +7,7 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAyfAm811uwXI2d-c2qfQzwAWCDb6fWsMs",
+  apiKey: "",
   authDomain: "labtech-44e37.firebaseapp.com",
   projectId: "labtech-44e37",
   storageBucket: "labtech-44e37.appspot.com",
