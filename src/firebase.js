@@ -1,10 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {
-    getFirestore,
-    collection,
-    addDoc,
-    getDocs
-} from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE,
@@ -18,31 +13,31 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
-// Add data
-export const addData = async(batchInfo) => {
-    try {
-        const docRef = addDoc(collection(db, "batch"), batchInfo
-        // {
-        //   batchId: 0,
-        //   test: "extraction",
-        //   time: 15000,
-        //   isTimerActive: false
-        // }
-        );
-        console.log("Document written with ID: ", docRef);
-      } catch (e) {
-        console.error("Error adding document: ", e);
-      }
-}
+// // Add data
+// export const addData = async(batchInfo) => {
+//     try {
+//         const docRef = addDoc(collection(db, "batch"), batchInfo
+//         // {
+//         //   batchId: 0,
+//         //   test: "extraction",
+//         //   time: 15000,
+//         //   isTimerActive: false
+//         // }
+//         );
+//         console.log("Document written with ID: ", docRef);
+//       } catch (e) {
+//         console.error("Error adding document: ", e);
+//       }
+// }
 
-// Read data
-export const readData = async() => {
-  const querySnapshot = await getDocs(collection(db, "batch"));
+// // Read data
+// export const readData = async() => {
+//   const querySnapshot = await getDocs(collection(db, "batch"));
 
-  querySnapshot.forEach((doc) => {
-  console.log(`Read data: ${doc.id} => ${doc.data().batchId}`);
-  });
-}
+//   querySnapshot.forEach((doc) => {
+//   console.log(`Read data: ${doc.id} => ${doc.data().batchId}`);
+//   });
+// }
 

@@ -1,87 +1,111 @@
-import React, { useState } from 'react';
+import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { db } from '../firebase';
 
 const KanbanContext = React.createContext()
 
-function KanbanContextProvider({children}) {
-    const [batches, setBatches] = useState([]);
+function KanbanContextProvider({ children }) {
+    const [batches, setBatches] = useState([
+        {
+            batchId: 4,
+            test: "extraction",
+            time: 10000
+        },
+        {
+            batchId: 3,
+            test: "extraction",
+            time: 10000
+        },
+        {
+            batchId: 2,
+            test: "enrichment",
+            time: 10000
+        },
+        {
+            batchId: 1,
+            test: "sequencing",
+            time: 10000
+        }
+    ]);
     const [batchNumber, setBatchNumber] = useState(1);
     const [userLogin, setUserLogin] = useState(false);
+    const batchCollectionRef = collection(db, "batch");
 
     const handleLogin = () => {
         setUserLogin(prevState => !prevState)
     }
 
-    const createExtractionBatch = (batchNum) => {
+    //FIREBASE: CREATE BATCH
+    const createFirebaseBatch = async () => {
         const futureTime = Date.now() + 10000;
 
-        return {
-            batchId: batchNum,
+        await addDoc(batchCollectionRef, {
+            batchId: batchNumber,
             test: "extraction",
             time: futureTime,
             isTimerActive: false
-        }
-    }
-
-    const addBatch = () => {
-        setBatches(prevBatches => prevBatches.concat([createExtractionBatch(batchNumber)]));
+        })
         setBatchNumber(prevNumber => prevNumber + 1);
     }
 
+    //FIREBASE: GET BATCHES
+    useEffect(() => {
+        const getBatches = async () => {
+            const data = await getDocs(batchCollectionRef);
+            setBatches(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+            
+        }
+        getBatches();
+        
+        
+    }, [batchCollectionRef])
 
-
-    const moveToNextTest = (batchToUpdate) => {
+    //FIREBASE: UPDATE BATCH and DELETE BATCH
+    const updateFirebaseBatch = async(batchToUpdate) => {
         //extraction > libraryPrep > lpCleanup > enrichment > quantitation > sequencing > remove
+        const batchDoc = doc(db, "batch", batchToUpdate.id);
         const testToUpdate = batchToUpdate.test;
         let updatedTest = null;
-        let batchUpdated = batches;
         const futureTime = Date.now() + 10000;
 
-        switch(testToUpdate){
+        switch (testToUpdate) {
             case 'extraction':
-                updatedTest = 'libraryPrep';
+                updatedTest = { test: 'libraryPrep', time: futureTime };
                 break;
             case 'libraryPrep':
-                updatedTest = 'lpCleanup';
+                updatedTest = { test: 'lpCleanup', time: futureTime };
                 break;
             case 'lpCleanup':
-                updatedTest = 'enrichment';
+                updatedTest = { test: 'enrichment', time: futureTime };
                 break;
             case 'enrichment':
-                updatedTest = 'quantitation';
+                updatedTest = { test: 'quantitation', time: futureTime };
                 break;
             case 'quantitation':
-                updatedTest = 'sequencing';
+                updatedTest = { test: 'sequencing', time: futureTime };
                 break;
-            default:
-                updatedTest = null;
+            default: //delete batch
+                await deleteDoc(batchDoc);
+                
         }
-        if (updatedTest === null) {
-            batchUpdated = batches.filter(batch => batch.batchId !== batchToUpdate.batchId);
-        } else {
-            batchUpdated = batches.map(batch => {
-                if(batch.batchId === batchToUpdate.batchId){
-                    return {...batch, test: updatedTest, time: futureTime}
-                }
-                return batch;
-            });
-        }
-        setBatches(batchUpdated)
+        await updateDoc(batchDoc, updatedTest);
     }
 
+
     return (
-        <KanbanContext.Provider 
+        <KanbanContext.Provider
             value={{
-                batches, 
+                batches,
                 batchNumber,
-                addBatch,
-                moveToNextTest,
                 userLogin,
                 handleLogin,
-                }}
+                createFirebaseBatch,
+                updateFirebaseBatch
+            }}
         >
             {children}
         </KanbanContext.Provider>
     )
 }
 
-export {KanbanContextProvider, KanbanContext}
+export { KanbanContextProvider, KanbanContext }

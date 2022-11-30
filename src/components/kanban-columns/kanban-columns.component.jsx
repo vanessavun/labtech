@@ -2,7 +2,6 @@ import React, {useContext} from 'react';
 import DataCard from '../data-card/data-card.component';
 import { KanbanContext } from '../../context/KanbanContext';
 import './kanban-columns.styles.css';
-import {getBatches} from '../../firebase'
 
 function KanbanColumns() {
     const {batches} = useContext(KanbanContext)

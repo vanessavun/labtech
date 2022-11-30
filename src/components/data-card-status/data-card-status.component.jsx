@@ -29,8 +29,8 @@ function DataCardStatus({ data }) {
     return (
         <>
             <div className='card-body'>
-                <p className="card-subtitle mb-2 text-muted">Status: <i>{status}</i></p>
                 <div className='countdown-container container'>
+                <p className="card-subtitle mb-2 text-muted">Status: <i>{status}</i></p>
                     <Progress
                         timeLeft={timeLeft}
                     />
