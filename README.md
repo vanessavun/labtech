@@ -49,7 +49,7 @@ npm install
 ### Global state management
 - KanbanContext.js contains the useContext React hook for global state management
 
-### Backend implementation
+### Backend implementation (11/2022)
 
-- Firebase (none SQL)
-- To store patient batches as an array of objects
+- Firebase (noSQL) is being developed in the firebase branch, and CRUD is implemented for the batch creation (Create a batch, get batches, update batch and delete batch). However, because of the constant re-rendering of the page every time a batch is moved onto the next test column, it created over 50K reads.
+- The re-rendering and re-reads of the database proves that optimization needs to be implement to prevent re-reads and re-rendering. Because it crashed my free-available space in Firebase, I am choosing not to launch the app with Firebase connected.
