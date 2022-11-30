@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
 function Progress({timeLeft}) { //Date.now() + 10000
