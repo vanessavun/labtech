@@ -8,7 +8,7 @@ A biotech laboratory has been keeping track of their sample batch status using a
 
 ## The solution
 
-The goal is to show a visual representation of batches running through the laboratory. The kanban board allows countdown timing of batches when they are running on the matchine. When the batches are done, they will show up on the next test queue which will be ready to do the next step. The laboratory technologist will start the machine and also the batch in the kanban board.
+The goal is to show a visual representation of batches running through the laboratory. The kanban board allows countdown timing of batches when they are running on the machine. When the batches are done, they will show up on the next test queue which will be ready to do the next step. The laboratory technologist will start the machine and also the batch in the kanban board.
 
 ## Documentation
 
@@ -49,9 +49,7 @@ npm install
 ### Global state management
 - KanbanContext.js contains the useContext React hook for global state management
 
-### Backend implementation
+### Backend implementation (11/2022)
 
-- Firebase (noSQL)
-- Goal: To store patient batches as an array of objects
-- Result: I tried implementing Firebase but the way of querying Firebase and how the collection and documents are set up are not fitting in with the logic of the front end.
-- Lesson learned: Because of this failure to add a backend, I need to create another version of the kanban board so the schema of the backend architecture can be easily implemented with the front end logic.
+- Firebase (noSQL) is being developed in the firebase branch, and CRUD is implemented for the batch creation (Create a batch, get batches, update batch and delete batch). However, because of the constant re-rendering of the page every time a batch is moved onto the next test column, it created over 50K reads.
+- The re-rendering and re-reads of the database proves that optimization needs to be implement to prevent re-reads and re-rendering. Because it crashed my free-available space in Firebase, I am choosing not to launch the app with Firebase connected.
