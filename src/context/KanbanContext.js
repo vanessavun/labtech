@@ -1,6 +1,6 @@
 import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import { db } from '../firebase';
+import { db, signInWithGooglePopup } from '../firebase';
 
 const KanbanContext = React.createContext()
 
@@ -31,8 +31,8 @@ function KanbanContextProvider({ children }) {
     const [userLogin, setUserLogin] = useState(false);
     const batchCollectionRef = collection(db, "batch");
 
-    const handleLogin = () => {
-        setUserLogin(prevState => !prevState)
+    const handleLogin = async() => {
+        await signInWithGooglePopup();
     }
 
     //FIREBASE: CREATE BATCH
@@ -42,10 +42,10 @@ function KanbanContextProvider({ children }) {
         await addDoc(batchCollectionRef, {
             batchId: batchNumber,
             test: "extraction",
-            time: futureTime,
-            isTimerActive: false
+            time: futureTime
         })
         setBatchNumber(prevNumber => prevNumber + 1);
+        console.log("created batch")
     }
 
     //FIREBASE: GET BATCHES
@@ -56,8 +56,6 @@ function KanbanContextProvider({ children }) {
             
         }
         getBatches();
-        
-        
     }, [batchCollectionRef])
 
     //FIREBASE: UPDATE BATCH and DELETE BATCH
