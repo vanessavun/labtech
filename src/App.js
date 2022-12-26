@@ -1,22 +1,23 @@
-import React,{useEffect} from 'react';
-import KanbanContainer from './components/kanban-container/kanban-container.component';
-import Navbar from './components/navbar/navbar.component';
-import KanbanBoardTitle from './components/kanban-board-title/kanban-board.component';
-import { KanbanContextProvider } from './context/KanbanContext';
-import { readData } from './firebase';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/navbar/navbar.component";
+import Authentication from "./route/authentication/authentication.component";
+import Kanban from "./route/kanban/kanban.component";
+// import { readData } from '../src/utils/firebase/firebase';
 
 function App() {
-  useEffect(() => {
-    readData()
-  }, [])
+  // useEffect(() => {
+  //   readData()
+  // }, [])
 
   return (
     <>
-      <KanbanContextProvider>
-        <Navbar />
-        <KanbanBoardTitle />
-        <KanbanContainer />
-      </KanbanContextProvider>
+      <Routes>
+        <Route path="/" element={<Navbar />}>
+          <Route index element={<Kanban />} />
+          <Route path="auth" element={<Authentication />} />
+        </Route>
+      </Routes>
     </>
   );
 }

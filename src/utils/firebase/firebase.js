@@ -5,15 +5,21 @@ import {
     addDoc,
     getDocs,
 } from "firebase/firestore";
+import {
+  getAuth,
+  signInWithRedirect,
+  signInWithPopup,
+  GoogleAuthProvider
+} from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "labtech-44e37.firebaseapp.com",
-  projectId: "labtech-44e37",
-  storageBucket: "labtech-44e37.appspot.com",
-  messagingSenderId: "361742183271",
-  appId: "1:361742183271:web:b5d63a35b771bb68da9dc2",
-  measurementId: "G-CV0L2DL4KL"
+  apiKey: "AIzaSyCEWc_5RTMe0zpNbdliBBhrAkRzMkV18nM",
+  authDomain: "labtech2-2891b.firebaseapp.com",
+  projectId: "labtech2-2891b",
+  storageBucket: "labtech2-2891b.appspot.com",
+  messagingSenderId: "494810660754",
+  appId: "1:494810660754:web:d84a19097471678ab20b4b",
+  measurementId: "G-3YP7FPNSHZ"
 };
 
 // Initialize Firebase
@@ -44,3 +50,14 @@ export const readData = async() => {
       console.log(`Doc batchId: ${doc.batchId}`);
     });
 }
+
+//GOOGLE PROVIDER WITH POPUP AND WITH REDIRECT
+const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
+  prompt: "select_account",
+});
+export const auth = getAuth();
+export const signInWithGooglePopup = () =>
+  signInWithPopup(auth, googleProvider);
+export const signInWithGoogleRedirect = () =>
+  signInWithRedirect(auth, googleProvider);
