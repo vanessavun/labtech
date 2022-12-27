@@ -1,10 +1,15 @@
 .kanban-list {
-    background-color: #94bbe9;
     min-height: 500px;
-    border-radius: 5px;
 }
 
 .kanban-column {
-    min-height: 250px;
+    min-height: 60vh;
+    background-color: #94bbe9;
+    display: inline-block;
 }
 
+.kanban-row {
+    display: block;
+    overflow-y: auto;
+    white-space: nowrap;
+}

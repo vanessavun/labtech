@@ -1,5 +1,5 @@
 import React from 'react'
-import { addData } from '../../firebase'
+import { addData } from '../../utils/firebase/firebase'
 
 function KanbanHeader() {
   
