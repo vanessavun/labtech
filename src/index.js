@@ -4,16 +4,20 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+
 import { KanbanContextProvider } from "./context/KanbanContext";
+import { UserContextProvider } from "./context/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <KanbanContextProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </KanbanContextProvider>
+    <UserContextProvider>
+      <KanbanContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </KanbanContextProvider>
+    </UserContextProvider>
   </React.StrictMode>
 );
 

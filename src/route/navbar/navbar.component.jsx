@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import "./navbar.styles.css";
-import { KanbanContext } from "../../context/KanbanContext";
+import { UserContext } from "../../context/UserContext";
 import { Outlet, Link } from "react-router-dom";
+import { signOutUser } from "../../utils/firebase/firebase";
 
 function Navbar() {
-  const { userLogin, handleLogin } = useContext(KanbanContext);
+  const { currentUser, displayName } = useContext(UserContext);
 
   return (
     <>
@@ -38,24 +39,22 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
-            {/* {userLogin ?
-                        (<ul className="navbar-nav d-flex align-items-center">
-                            <li className="nav-item">Welcome, Vanessa!</li>
-                            <li className='nav-item ps-2'><button className="btn btn-primary btn-sm" type="button" onClick={() => handleLogin()}>Log Out</button></li>
-                        </ul>)
-                        :
-                        (<ul className="navbar-nav d-flex align-items-center">
-                            <li className='nav-item ps-2'><button className="btn btn-primary btn-sm" type="button" onClick={() => handleLogin()}>Log In</button></li>
-                        </ul>)
-                    } */}
             <ul className="navbar-nav d-flex align-items-center">
               <li className="nav-item ps-2">
-                <button
-                  className="btn btn-warning btn-sm"
-                  type="button"
-                >
-                <Link to="/auth" className="nav-link p-0">Log In</Link>
-                </button>
+                {currentUser && displayName ? (
+                  <div className="d-flex justify-items-center">
+                    <p className="px-2 m-auto">Welcome, {displayName}!</p>
+                    <button className="btn btn-warning btn-sm" type="button" onClick={signOutUser}>
+                      Log Out
+                    </button>
+                  </div>
+                ) : (
+                  <button className="btn btn-warning btn-sm" type="button">
+                    <Link to="/auth" className="nav-link p-0">
+                      Log In
+                    </Link>
+                  </button>
+                )}
               </li>
             </ul>
           </div>

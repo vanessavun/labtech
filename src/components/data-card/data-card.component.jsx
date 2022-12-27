@@ -25,8 +25,8 @@ function DataCard({ batch }) {
         )))
 
       // If there is no data, show no pending batches message
-      : (<div className='alert alert-primary' role='alert'>
-          <span>No pending batches</span>
+      : (<div className='alert alert-primary text-wrap p-1' role='alert'>
+          <p className='m-0'>No pending batches</p>
         </div>)
       }
     </div>
