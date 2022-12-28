@@ -1,14 +1,16 @@
-import React from 'react'
-import { addData } from '../../utils/firebase/firebase'
+import React, { useContext } from 'react'
+// import { addData } from '../../utils/firebase/firebase'
+import { KanbanContext } from '../../context/KanbanContext'
 
 function KanbanHeader() {
+  const { addBatch } = useContext(KanbanContext);
   
   return (
     <div className='d-flex justify-content-around m-2'>
         <button 
           className="btn btn-primary" 
           type="button" 
-          onClick={() => addData()}>
+          onClick={addBatch}>
             Add new extraction batch
         </button>
         <form className="d-flex" role="search">
