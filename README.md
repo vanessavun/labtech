@@ -14,7 +14,7 @@ The goal is to show a visual representation of batches running through the labor
 
 ### To install
 ```bash
-npm install
+yarn
 ```
 
 ### Styling
@@ -28,9 +28,7 @@ npm install
 ```bash
 {
   batchId: batchNum,
-  test: "extraction",
-  time: futureTime,
-  isTimerActive: false
+  test: "extraction"
 }
 ```
 
@@ -38,8 +36,8 @@ npm install
 
 - Drop down menu, status, countdown timer, progress bar (visual representation)
 - Progress bar uses the npm package: 'react-bootstrap/ProgressBar'
-- The progress bar uses the useEffect React Hook to see a visual representation of the bar filling up
-- The countdown timer uses the npm package: 'react-countdown'
+- The countdown timer uses the npm package: 'use-countdown-timer'
+- The progress bar uses the timer above as visual representation
 
 ### Components within the kanban board
 - title, container, header, columns
@@ -53,3 +51,6 @@ npm install
 
 - Firebase (noSQL) is being developed in the firebase branch, and CRUD is implemented for the batch creation (Create a batch, get batches, update batch and delete batch). However, because of the constant re-rendering of the page every time a batch is moved onto the next test column, it created over 50K reads.
 - The re-rendering and re-reads of the database proves that optimization needs to be implement to prevent re-reads and re-rendering. Because it crashed my free-available space in Firebase, I am choosing not to launch the app with Firebase connected.
+
+### Firebase authentication (12/2022-01/2023)
+- Firebase added for user authentication.
