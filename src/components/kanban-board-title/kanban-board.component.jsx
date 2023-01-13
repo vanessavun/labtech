@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import Toast from "../alert/alert.component";
 
 function KanbanBoardTitle() {
   return (
-    <h2 className='text-center p-2 m-2'>Sample Batch Kanban Board</h2>
-  )
+    <>
+      <h3 className="text-center p-2 m-2">Laboratory Timer Kanban Board</h3>
+      <Toast />
+      
+    </>
+  );
 }
 
-export default KanbanBoardTitle
+export default KanbanBoardTitle;

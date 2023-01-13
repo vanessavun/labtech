@@ -44,7 +44,11 @@ function Navbar() {
                 {currentUser && displayName ? (
                   <div className="d-flex justify-items-center">
                     <p className="px-2 m-auto">Welcome, {displayName}!</p>
-                    <button className="btn btn-warning btn-sm" type="button" onClick={signOutUser}>
+                    <button
+                      className="btn btn-warning btn-sm"
+                      type="button"
+                      onClick={signOutUser}
+                    >
                       Log Out
                     </button>
                   </div>

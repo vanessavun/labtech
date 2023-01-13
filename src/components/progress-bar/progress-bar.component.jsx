@@ -1,20 +1,20 @@
-import React from 'react'
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import React from "react";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
-function Progress({timeLeft}) {
-    let progress = 0;
+function Progress({ countdown, isRunning }) {
+  let now = 100-((countdown / 5000)*100);
+  let progress;
+  console.log(countdown, now);
 
-    if (timeLeft >= 100) {
-      progress = <ProgressBar variant="success" now={100} />
-    } else {
-      progress = <ProgressBar now={timeLeft} />
-    }
 
-    return (
-      <>
-      {progress}
-      </>
-    )
+  if (isRunning) {
+    progress = <ProgressBar now={now} />;
+  } else {
+    progress = <ProgressBar now={0} />;
+  }
+
+
+  return <>{progress}</>;
 }
 
-export default Progress
+export default Progress;

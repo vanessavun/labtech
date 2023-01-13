@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-// import { addData } from '../../utils/firebase/firebase'
 import { KanbanContext } from '../../context/KanbanContext'
 
 function KanbanHeader() {

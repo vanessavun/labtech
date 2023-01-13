@@ -3,12 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./route/navbar/navbar.component";
 import Authentication from "./route/authentication/authentication.component";
 import Kanban from "./route/kanban/kanban.component";
-// import { readData } from '../src/utils/firebase/firebase';
 
 function App() {
-  // useEffect(() => {
-  //   readData()
-  // }, [])
 
   return (
     <>

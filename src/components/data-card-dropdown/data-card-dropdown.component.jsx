@@ -11,14 +11,6 @@ function DataCardDropdown({data}) {
             <ul className="dropdown-menu">
             <li>
                 <button 
-                className="dropdown-item" 
-                onClick={()=>console.log("Start timer")}
-                disabled>
-                Start run
-                </button>
-            </li>
-            <li>
-                <button 
                     className="dropdown-item" 
                     onClick={()=>moveToNextTest(data)}>
                     {data.test !== 'sequencing' ? "Proceed next step" : "Remove"}

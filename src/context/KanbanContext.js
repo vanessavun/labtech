@@ -1,21 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const KanbanContext = React.createContext();
 
 
 function KanbanContextProvider({children}) {
-    const [batches, setBatches] = useState([]);
-    const [batchNumber, setBatchNumber] = useState(1);
-    const [currentUser, setCurrentUser] = useState("Guest");
+    let storedBatches = [];
+    let currentStoredNumber = 1;
 
+    if(localStorage.getItem('storedBatches')){
+        storedBatches = JSON.parse(localStorage.storedBatches)
+        if(storedBatches.length > 1) {
+            currentStoredNumber = (storedBatches[storedBatches.length-1].batchId)+1;
+        }
+    }
+    const [batches, setBatches] = useState(storedBatches);
+    const [batchNumber, setBatchNumber] = useState(currentStoredNumber);
+    const [currentUser, setCurrentUser] = useState("Guest");
+    
+    useEffect(() => {
+    localStorage.setItem('storedBatches', JSON.stringify(batches))
+    }, [batches])
 
     const createExtractionBatch = (batchNum) => {
-        const futureTime = Date.now() + 10000;
         return {
             batchId: batchNum,
-            test: "extraction",
-            time: futureTime,
-            isTimerActive: false
+            test: "extraction"
         }
     }
 

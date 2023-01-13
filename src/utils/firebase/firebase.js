@@ -18,7 +18,7 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCEWc_5RTMe0zpNbdliBBhrAkRzMkV18nM",
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: "labtech2-2891b.firebaseapp.com",
   projectId: "labtech2-2891b",
   storageBucket: "labtech2-2891b.appspot.com",
@@ -33,13 +33,10 @@ const db = getFirestore(app);
 
 // Add data
 export const addData = async () => {
-  // const futureTime = Date.now() + 10000
   try {
     const docRef = addDoc(collection(db, "batch"), {
       batchId: 1,
       test: "extraction",
-      time: 15000,
-      isTimerActive: false,
     });
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
