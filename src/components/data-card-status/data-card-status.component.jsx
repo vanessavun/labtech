@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import Progress from "../progress-bar/progress-bar.component";
 import { Button } from "react-bootstrap";
 import { useCountdownTimer } from "use-countdown-timer";
 
 function DataCardStatus({ data }) {
-  const [timerChange, setTimerChange] = useState(false);
+  // const [timerChange, setTimerChange] = useState(false);
   const { countdown, start, reset, pause, isRunning } = useCountdownTimer({
     timer: 1000 * 5,
     expireImmediate: false
   });
 
   const handleTimeClick = () => {
-    setTimerChange(true);
+    // setTimerChange(true);
     alert("Feature in progress")
   }
 
