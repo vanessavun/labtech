@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { KanbanContext } from '../../context/KanbanContext'
+import './kanban-header.styles.css'
 
 function KanbanHeader() {
   const { addBatch } = useContext(KanbanContext);
@@ -7,7 +8,7 @@ function KanbanHeader() {
   return (
     <div className='d-flex justify-content-around m-2'>
         <button 
-          className="btn btn-primary" 
+          className="add-button btn btn-primary" 
           type="button" 
           onClick={addBatch}>
             Add new extraction batch
@@ -16,7 +17,7 @@ function KanbanHeader() {
             <input 
               className="form-control me-2" 
               type="search" 
-              placeholder="Search" 
+              placeholder="Batch number" 
               aria-label="Search" />
             <button 
               className="btn btn-outline-success" 
